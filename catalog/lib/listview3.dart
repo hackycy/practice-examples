@@ -21,7 +21,7 @@ class App extends StatelessWidget {
 
 class Main extends StatelessWidget {
 
-  List<String> _list = new List();
+  final List<String> _list = new List();
 
   Main() {
     for(var i=0; i<22; i++) {
