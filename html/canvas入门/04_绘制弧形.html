@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas height="500" width="1000" id="canvas">
+        you browser is not support
+    </canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        if(canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = 'rgb(0,0,255)';
+            
+            // ctx.arc(500, 250, 100, 0, (Math.PI / 180) * 360, true);
+
+            // ctx.stroke();
+
+            ctx.moveTo(100, 100);
+            ctx.lineTo(150, 100);
+            ctx.stroke();
+
+            var beat = new Path2D();
+
+            beat.__proto__.eat = function() {
+                // this.arc(100, 100, 50, 0, (Math.PI / 180) * 320);
+                this.arc(100, 100, 50, Math.PI / 5, -Math.PI / 5, false);
+                this.lineTo(95, 100);
+            }
+
+            // beat.arc(100, 100, 50, 0, (Math.PI / 180) * 270);
+            beat.eat();
+            ctx.fill(beat);
+
+        } else {
+            console.log('not support');
+        }
+    </script>
+</body>
+</html>

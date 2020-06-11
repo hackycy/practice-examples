@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .box {
+        width: 20rem;
+        height: 10rem;
+        background: #cccccc;
+        text-align: center;
+    }
+
+    .hello {
+        color: red;
+        font-size: 1rem;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <p class="hello">helloworld</p>
+    </div>
+
+    <script>
+        //得到手机屏幕的宽度
+        let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        //得到html的dom元素
+        let htmlDom = document.getElementsByTagName('html')[0];
+        //设置根元素字体的大小
+        htmlDom.style.fontSize = htmlWidth / 20 + 'px';
+    </script>
+</body>
+
+</html>

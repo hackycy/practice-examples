@@ -1,0 +1,72 @@
+body {
+  font-size: 16px;
+}
+@media (min-width: 320px) {
+  html {
+    font-size: 85.33333333px;
+  }
+}
+@media (min-width: 375px) {
+  html {
+    font-size: 100px;
+  }
+}
+@media (min-width: 414px) {
+  html {
+    font-size: 110.4px;
+  }
+}
+/* 
+
+设计稿宽度：750
+设计稿高度：
+
+基准值换算公式： rem = document.documentElement.clientWidth * dpr / 10
+
+css像素： 视觉稿像素 / 基准值rem * 1rem
+
+*/
+#menu {
+  height: 0.55rem;
+  background-color: aqua;
+}
+#left {
+  float: left;
+  width: 1.2rem;
+}
+#left .dianpu,
+#left .kefu,
+#left .shoucang {
+  float: left;
+  width: 33.3%;
+  height: 0.55rem;
+  line-height: 0.55rem;
+  text-align: center;
+  font-size: 0.14rem;
+}
+#right {
+  overflow: hidden;
+  height: 100%;
+  background-color: white;
+}
+#right .add,
+#right .buy {
+  float: left;
+  width: 50%;
+  height: 100%;
+  background-clip: content-box;
+  color: white;
+  text-align: center;
+  line-height: 0.55rem;
+  font-size: 0.07rem;
+}
+#right .add {
+  background-color: orange;
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+#right .buy {
+  background-color: orangered;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" :style="{ fontSize: postFontSize + 'em' }">
+        <!-- <blog title="Hello Blog"></blog>     -->
+        <blog :posts="posts" @enlarge-text='changeFontSizeEvent'></blog>
+    </div>
+    
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('blog', {
+            props:['posts'],
+            template: `
+                <ul>
+                    <button @click='changeFontSize'>字体变大</button>
+                    <li v-for="post in posts">
+                        <p>{{ post.name }}</p>
+                    </li>
+                </ul>
+            `,
+            mounted:function(){
+                console.log(this.posts);
+            },
+            methods: {
+                changeFontSize(){
+                    this.$emit('enlarge-text', 0.2);
+                }
+            }
+        });
+        new Vue({
+            el: '#app',
+            data:function(){
+                return {
+                    posts: [
+                        {
+                            name: 'Hello Blog',
+                        },
+                        {
+                            name: '日记',
+                        },
+                        {
+                            name: 'Android',
+                        }
+                    ],
+                    postFontSize: 1
+                }
+            },
+            methods: {
+                changeFontSizeEvent(value){
+                    // console.log('run');
+                    this.postFontSize += value;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

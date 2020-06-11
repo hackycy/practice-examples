@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+        }
+
+        #main {
+            width: 100%;
+            height: 100%;
+
+            /* overflow: hidden; */
+
+            perspective: 800;
+            -webkit-perspective: 1000;
+            /* Safari 和 Chrome */
+        }
+
+        #container {
+            position: relative;
+
+            width: 300px;
+            height: 200px;
+            margin: 500px auto;
+
+            transform-style: preserve-3d;
+            /* 子元素将保留其 3D 位置 */
+        }
+
+        #container img {
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            top: 0;
+            left: 0;
+        }
+
+        #container img:hover {
+            transform: scale(1.2, 1.2);
+            transition: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+
+        <div id="container">
+
+            <img src="./assets/1.jpg" alt="">
+            <img src="./assets/2.jpg" alt="">
+            <img src="./assets/3.jpg" alt="">
+            <img src="./assets/4.jpg" alt="">
+            <img src="./assets/5.jpg" alt="">
+            <img src="./assets/6.jpg" alt="">
+            <img src="./assets/7.jpg" alt="">
+
+        </div>
+
+    </div>
+
+    <script>
+
+        var container = document.getElementById('container');
+
+        var imgs = document.getElementsByTagName('img');
+
+        var length = imgs.length;
+
+        container.addEventListener('click', function () {
+
+            var perDeg = 360 / length;
+
+            Array.prototype.forEach.call(imgs, function (v, i) {
+                let deg = perDeg * i;
+
+                v.style.transform = `rotateY(${deg}deg) translateZ(350px)`;
+
+                let delay = (length - i) * 0.2;
+                v.style.transition = `2s ${delay}s`;
+
+            })
+        });
+
+        // window.onload = function () {
+        //     var perDeg = 360 / length;
+
+        //     Array.prototype.forEach.call(imgs, function (v, i) {
+        //         let deg = perDeg * i;
+
+        //         v.style.transform = `rotateY(${deg}deg) translateZ(350px)`;
+
+        //         let delay = (length - i) * 0.2;
+        //         v.style.transition = `2s ${delay}s`;
+
+        //     })
+        // }
+
+        var newX, newY, lastX, lastY, moveX, moveY;
+        var rotX = 0, rotY = 0;
+
+        var firstClick = false;
+
+        window.addEventListener('mousedown', function (e) {
+            if (!firstClick) {
+                lastX = e.clientX;
+                lastY = e.clientY;
+            }
+
+            this.addEventListener('mousemove', ratate);
+
+            this.addEventListener('mouseup', function () {
+                this.removeEventListener('mousemove', ratate);
+            });
+
+        });
+
+        function ratate(e) {
+            // console.log(e);
+            newX = e.clientX;
+            newY = e.clientY;
+
+            // console.log(newX, newY, lastX, lastY);
+
+            moveX = newX - lastX;
+            moveY = newY - lastY;
+
+            console.log(moveX, moveY);
+
+            rotX += moveX;
+            rotY -= moveY;
+
+            console.log(rotX, rotY);
+
+            container.style.transform = `rotateY(${rotX * 0.2}deg) rotateX(${rotY * 0.2}deg)`;
+
+            lastX = newX;
+            lastY = newY;
+        }
+
+    </script>
+</body>
+
+</html>

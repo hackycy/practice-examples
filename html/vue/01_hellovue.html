@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    
+</head>
+
+<body>
+    <div id="app">{{ text }}</div>
+
+    <div id="app2" v-bind:title="message">鼠标悬停几秒钟查看此处动态绑定的提示信息！</div>
+
+    <div id="app3">
+        <p v-if='seen'>你看不见我</p>
+        <button v-on:click='see'>我看的见你</button>
+    </div>
+
+    <div id="app4">
+        <ul>
+            <li v-for='todo in todos'>
+                {{ todo.text }}
+            </li>
+        </ul>
+    </div>
+
+    <div id="app5">
+        <input type="text" name="" id="" v-model='message'>
+        <p>{{ message }}</p>
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 'use strict';
+        new Vue({
+            el: '#app',
+            data: () => {
+                return {
+                    text: "Hello Vue"
+                }
+            }
+        });
+        new Vue({
+            el: '#app2',
+            data: () => {
+                return {
+                    message: '页面加载：' + new Date().toLocaleString() 
+                }
+            }
+        });
+        new Vue({
+            el: '#app3',
+            data: () => {
+                return {
+                    seen: true
+                }
+            },
+            methods: {
+                see: function() {
+                    console.log(this);
+                    this.seen = !this.seen;
+                }
+            }
+        });
+        new Vue({
+            el: '#app4',
+            data: ()=>{
+                return {
+                    todos:[
+                        {
+                            text: '学习 JavaScript'
+                        },
+                        {
+                            text: '学习 Vue'
+                        },
+                        {
+                            text: '整个牛项目'
+                        }
+                    ]
+                }
+            }
+        });
+        new Vue({
+            el: '#app5',
+            data: () => {
+                return {
+                    message: 'Hello Vue'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

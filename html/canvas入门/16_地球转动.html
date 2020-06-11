@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            height: 600px;
+            width: 600px;
+            border: 1px black solid;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300">您的浏览器不支持canvas，请尝试使用别的浏览器（chrome，360，火狐等）</canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var earth = new Image();
+        var moon = new Image();
+        var sun = new Image();
+
+        function init() {
+            sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+            moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+            earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+            window.requestAnimationFrame(draw);
+        }
+
+
+        function draw() {
+
+            var ctx = canvas.getContext('2d');
+            if (ctx) {
+                // 该模式先绘制的就谁在顶层
+                ctx.globalCompositeOperation = 'destination-over';
+                //清楚画布
+                ctx.clearRect(0, 0, 300, 300);
+
+                ctx.fillStyle = 'rgba(0,0,0,0.4)';
+                ctx.strokeStyle = 'rgba(0,153,255,0.4)';
+                ctx.save();
+
+                var time = new Date();
+
+                ctx.translate(150, 150);
+                ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
+                // ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds()); 
+                // console.log(time.getMilliseconds());
+
+                ctx.translate(-105, 0);
+                ctx.fillRect(-40, -12, 40, 24);
+
+                ctx.drawImage(earth, -12, -12);
+                ctx.save();
+
+
+                //moon
+                
+                ctx.rotate(((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds());
+
+                ctx.translate(30, 0);
+                ctx.drawImage(moon, -3.5, -3.5);
+
+
+                //轨道
+                ctx.restore();
+                ctx.restore();
+                ctx.beginPath();
+                ctx.arc(150, 150, 105, 0, Math.PI * 2, false); // Earth orbit
+                ctx.stroke();
+                ctx.save();
+
+
+                ctx.drawImage(sun, 0, 0, 300, 300);
+
+
+
+                window.requestAnimationFrame(draw);
+
+            }
+
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

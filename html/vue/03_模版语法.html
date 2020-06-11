@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>message: {{ msg }}</span>
+        <span v-once>{{ msg }}</span>
+        <span>{{ '$' + price }}</span>
+        <button v-bind:disabled="isButtonDisabled" v-on:click='changeSeen'>Button</button>
+        <button v-bind:disabled="isButtonDisabled" @click='changeSeen'>Button</button>
+
+        <p v-if='seen'>你看得到我吗</p>
+
+        <a v-bind:href='linkurl' target="_blank">百度</a>
+        <a :href='linkurl' target="_blank">百度</a>
+    </div>
+
+    
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        let vm = new Vue({
+            el: '#app',
+            // template: `<span>message: {{ msg }}</span>`,
+            data: function(){
+                return {
+                    msg: '我爱你',
+                    isButtonDisabled: false,
+                    price: 10,
+                    seen: true,
+                    linkurl: 'https://www.baidu.com'
+                }
+            },
+            methods: {
+                changeSeen: function(){
+                    this.seen = !this.seen;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

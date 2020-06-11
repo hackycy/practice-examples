@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // function Person(){
+        //     this.age = 10;
+        //     this.say = function(){
+        //         console.log(this);
+        //     }
+        // }
+
+        // var p1 = new Person();
+        // p1.say(); //Person
+
+        // function Person(){
+        //     this.age = 10;
+        // }
+
+        // Person.prototype.say = function(){
+        //     console.log(this);
+        // }
+
+        // var p2 = new Person();
+        // p2.say(); //Person
+
+        // var p2 = {
+        //     age: 10,
+        //     say: function(){
+        //         console.log(this);
+        //     }
+        // }
+        // p2.say(); //p2
+
+        var clear = function(){
+            console.log(this.length);
+        }
+
+        var tom = {
+            c: clear,
+            length: 20
+        }
+
+        tom.c(); //20
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

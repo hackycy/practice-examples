@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>nocomputed: {{ msg }}</p>
+        <p>temp: {{ msg.split('').reverse().join('') }}</p>
+        <p>computed: {{ computeMsg }}</p>
+        <p>function: {{ computeFunc() }}</p>
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: function(){
+                return {
+                    msg: 'hello world',
+                    question: 'what is question'
+                }
+            },
+            computed: {
+                computeMsg(){
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            methods: {
+                computeFunc(){
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            watch: {
+                question: function(newV, oldV) {
+                    console.log(newV, oldV);
+                }
+            }
+        }); 
+    </script>
+</body>
+</html>

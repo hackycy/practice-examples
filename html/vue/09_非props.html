@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .b {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <base-input v-model="username" required placeholder="Enter your username"></base-input>
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('base-input', {
+            inheritAttrs: false,
+            props: ['value'],
+            template: `
+                <label>
+                {{ value }}
+                <input
+                    v-bind="$attrs"
+                    v-bind:value="value"
+                    v-on:input="$emit('input', $event.target.value)"
+                >
+                </label>
+            `,
+            mounted(){
+                console.log(this);
+            }
+        });
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                    username: 'Hello'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

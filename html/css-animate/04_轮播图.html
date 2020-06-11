@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            position: relative;
+            display: inline-block;
+
+            overflow: hidden;
+
+            width: 500px;
+            height: 300px;
+        }
+
+        #container img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            transition: 1s;
+
+        }
+
+        /* #container img:first-child {
+            transform: translateX(500px);
+        } */
+    </style>
+</head>
+
+<body>
+
+
+    <div id="root">
+
+        <div id="container">
+
+            <img src="./assets/1.jpg" alt="">
+            <img src="./assets/2.jpg" alt="">
+            <img src="./assets/3.jpg" alt="">
+            <img src="./assets/4.jpg" alt="">
+            <img src="./assets/5.jpg" alt="">
+
+        </div>
+
+    </div>
+
+    <script>
+        var root = document.getElementById('container');
+
+        var childs = root.children;
+
+        var width = root.clientWidth;
+
+        Array.from(childs).map(function (e, i) {
+
+            console.log(e);
+
+            e.style.transform = `translateX(${i * width}px)`;
+
+        });
+
+        var index = 1;
+
+        setInterval(() => {
+            childs[0].style.marginLeft = `-${width}px`;
+        }, 1000);
+
+    </script>
+
+
+</body>
+
+</html>

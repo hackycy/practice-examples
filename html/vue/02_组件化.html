@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 局部组件
+        var Vheader = {
+            template:`
+                <div>
+                    我是头部
+                </div>
+            `
+        }
+
+        var Vmain = {
+            template:`
+                <div>
+                    我是主体
+                </div>
+            `
+        }
+
+        // 全局组建
+        Vue.component('Vfooter', {
+            template:`
+                <div>我是脚部</div>
+            `
+        });
+
+        new Vue({
+            el: '#app',
+            template: `
+                <div>
+                    <Vheader />
+                    xixixi
+                    <Vmain />
+                    <Vfooter />
+                </div>
+            `,
+            data: () => {
+                return {
+
+                }
+            },
+            components: {
+                Vheader,
+                Vmain
+            }
+        });
+    </script>
+</body>
+
+</html>

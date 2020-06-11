@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px black solid;
+        }
+    </style>
+</head>
+<body>
+    <canvas id='canvas' width="1000" height="500">
+        浏览器不支持canvas，请使用新版浏览器，不要用IE浏览器
+    </canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        if(canvas.getContext){
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = 'rgb(0,0,255)';
+
+            //绘制矩形
+            ctx.fillRect(0,0,200,200);
+
+            //绘制矩形边框
+            ctx.strokeRect(300,0,200,200);
+
+            //清楚指定区域，让清楚部分完全透明
+            ctx.clearRect(50,50,50,50);
+
+        }else {
+            console.log('browser is not support');
+        }
+    </script>
+</body>
+</html>
