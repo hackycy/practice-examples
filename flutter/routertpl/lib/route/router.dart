@@ -7,6 +7,7 @@ import '../page/home.dart';
 import '../page/setting.dart';
 import '../page/search.dart';
 import '../page/detail.dart';
+import '../page/appbar.dart';
 
 final routes = {
   '/': (BuildContext context) => MainTabs(),
@@ -15,6 +16,7 @@ final routes = {
   '/setting': (BuildContext context) => SettingPage(),
   '/search': (BuildContext context) => SearchPage(),
   '/detail': (BuildContext context) => DetailPage(),
+  '/setting/appbar': (BuildContext context) => AppBarPage(),
 };
 
 /*

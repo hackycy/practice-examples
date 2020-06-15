@@ -13,8 +13,15 @@ class _SettingPageState extends State<SettingPage> {
       appBar: AppBar(
         title: Text('设置'),
       ),
-      body: Center(
-        child: Text('这是设置'),
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            title: Text('AppBar'),
+            onTap: () {
+              Navigator.pushNamed(context, '/setting/appbar');
+            },
+          ),
+        ],
       ),
     );
   }
