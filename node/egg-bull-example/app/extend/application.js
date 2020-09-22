@@ -10,8 +10,8 @@ module.exports = {
     if (!this[QUENE]) {
       const quene = new Bull('my-first-quene', { redis: this.config.redis });
       quene.process(function(job, done) {
-        console.log(job);
-        this.logger.info('[bull]', job);
+        console.log(job.data);
+        this.logger.info('[bull]', job.data);
         done();
       });
       this[QUENE] = quene;
