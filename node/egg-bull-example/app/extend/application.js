@@ -9,10 +9,9 @@ module.exports = {
     // this 就是 app 对象，在其中可以调用 app 上的其他方法，或访问属性
     if (!this[QUENE]) {
       const quene = new Bull('my-first-quene', { redis: this.config.redis });
-      quene.process(function(job, done) {
-        console.log(job.data);
+      quene.process(async job => {
+        // console.log(job.data);
         this.logger.info('[bull]', job.data);
-        done();
       });
       this[QUENE] = quene;
     }
