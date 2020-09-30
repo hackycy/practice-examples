@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      border: solid 1px black;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas" width="800" height="800" >当前浏览器不支持canvas</canvas>
+  <script>
+    var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+
+    // 外圈正方形
+    ctx.moveTo(100, 100);
+    ctx.lineTo(400, 100);
+    ctx.lineTo(400, 400);
+    ctx.lineTo(100, 400);
+    ctx.closePath();
+
+    // 内圈正方形
+    ctx.moveTo(150, 150);
+    // ctx.lineTo(350, 150);
+    // ctx.lineTo(350, 350);
+    // ctx.lineTo(150, 350);
+    // 对比上述 填充有所区别  
+    // 这里主要的填充的规则为非零环绕规则
+    // 判断方法
+    /**
+    * 1、看一块区域是否填充
+    * 2、从这个区域拉一条直线
+    * 3、看和这条直线相交的轨迹
+    * 4、如果顺时针轨迹 +1
+    * 5、如果逆时针轨迹 -1
+    * 6、计算所有的轨迹的值之和
+    * 7、如果是非零则填充（负数正数都可只要不为零）
+    * 8、如果是等于0则不填充
+    */
+    ctx.lineTo(150, 350);
+    ctx.lineTo(350, 350);
+    ctx.lineTo(350, 150);
+    ctx.closePath();
+
+    // 填充
+    ctx.fill();
+  </script>
+</body>
+</html>
