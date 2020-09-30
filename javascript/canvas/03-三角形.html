@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      border: solid 1px black;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas" width="800" height="800" >当前浏览器不支持canvas</canvas>
+  <script>
+    var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.moveTo(100, 100);
+    ctx.lineTo(200, 100);
+    ctx.lineTo(200, 200);
+
+    // 如果使用lineto可以，但是会缺角
+    // ctx.lineTo(100, 100);
+    ctx.lineWidth = 20;
+    
+    // 应该交给canvas自动闭合
+    ctx.closePath();
+    ctx.stroke();
+  </script>
+</body>
+</html>
