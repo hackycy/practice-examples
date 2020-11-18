@@ -7,7 +7,24 @@
   <script src="./promise.js"></script>
   <script>
 
-    new Promise()
+    var p = new Promise(function (resolve, reject) {
+      setTimeout(function() {
+          resolve(1)
+      })
+    })
+
+    p.then(function(v) {
+      console.log(v)
+    }, function(e) {
+      console.log(e)
+    })
+
+    p.then(function(v) {
+      console.log(v)
+    }, function(e) {
+      console.log(e)
+    })
+
 
   </script>
 </head>
