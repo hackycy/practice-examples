@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .float-left {
+      float: left;
+      margin-right: 10px;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .green {
+      background: green;
+    }
+
+    .pink {
+      background: pink;
+    }
+
+    .yellowgreen {
+      background: yellowgreen;
+    }
+
+    .yellow {
+      background: yellow;
+    }
+
+    .box {
+      width: 60px;
+      height: 60px;
+    }
+
+    #content {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    #content1 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    #content2 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      flex-wrap: wrap-reverse;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="float-left">
+    <h4>This is a nowrap</h4>
+    <div id="content">
+      <div class="red box"></div>
+      <div class="green box"></div>
+      <div class="pink box"></div>
+      <div class="yellowgreen box"></div>
+      <div class="yellow box"></div>
+    </div>
+  </div>
+
+  <div class="float-left">
+    <h4>This is a wrap</h4>
+    <div id="content1">
+      <div class="red box"></div>
+      <div class="green box"></div>
+      <div class="pink box"></div>
+      <div class="yellowgreen box"></div>
+      <div class="yellow box"></div>
+    </div>
+  </div>
+
+  <div class="float-left">
+    <h4>This is a wrap-reverse</h4>
+    <div id="content2">
+      <div class="red box"></div>
+      <div class="green box"></div>
+      <div class="pink box"></div>
+      <div class="yellowgreen box"></div>
+      <div class="yellow box"></div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

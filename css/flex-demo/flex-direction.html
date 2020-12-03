@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .float-left {
+      float: left;
+      margin-right: 10px;
+    }
+    #box {
+      width: 50px;
+      height: 50px;
+    }
+
+    #content {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: -webkit-flex;
+      -webkit-flex-direction: row;
+      display: flex;
+      flex-direction: row;
+    }
+
+    #content1 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: -webkit-flex;
+      -webkit-flex-direction: row-reverse;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    #content2 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+    }
+
+    #content3 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column-reverse;
+      -webkit-flex-direction: column-reverse;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="float-left">
+    <h4>This is a row</h4>
+    <div id="content">
+      <div id="box" style="background-color:red;">A</div>
+      <div id="box" style="background-color:lightblue;">B</div>
+      <div id="box" style="background-color:yellow;">C</div>
+    </div>
+  </div>
+
+  <div class="float-left">
+    <h4>This is a row-reverse</h4>
+    <div id="content1">
+      <div id="box" style="background-color:red;">A</div>
+      <div id="box" style="background-color:lightblue;">B</div>
+      <div id="box" style="background-color:yellow;">C</div>
+    </div>
+  </div>
+
+  <div class="float-left">
+    <h4>This is a column</h4>
+    <div id="content2">
+      <div id="box" style="background-color:red;">A</div>
+      <div id="box" style="background-color:lightblue;">B</div>
+      <div id="box" style="background-color:yellow;">C</div>
+    </div>
+  </div>
+
+  <div class="float-left">
+    <h4>This is a column-reverse</h4>
+    <div id="content3">
+      <div id="box" style="background-color:red;">A</div>
+      <div id="box" style="background-color:lightblue;">B</div>
+      <div id="box" style="background-color:yellow;">C</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

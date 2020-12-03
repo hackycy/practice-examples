@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 50px;
+      height: 100px;
+      background: orange;
+      margin: 5px;
+      line-height: 100px;
+    }
+
+    #content {
+      width: 400px;
+      height: 110px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+    }
+
+    #shrink {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box" id="shrink">shrink 0</div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+</body>
+</html>

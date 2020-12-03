@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .float-left {
+      float: left;
+      margin-right: 10px;
+    }
+
+    .clear {
+      clear: both;
+      margin-bottom: 20px;
+    }
+
+    .fix-height {
+      overflow: hidden;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .green {
+      background: green;
+    }
+
+    .pink {
+      background: pink;
+    }
+
+    .box {
+      width: 50px;
+      height: 50px;
+    }
+
+    #row-content {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      justify-content: flex-start;
+    }
+
+    #row-content1 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    #row-content2 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      justify-content: center;
+    }
+
+    #row-content3 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      justify-content: space-between;
+    }
+
+    #row-content4 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      justify-content: space-around;
+    }
+
+    /* row-reverse */
+
+    #row-reverse-content {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row-reverse;
+      -webkit-flex-direction: row-reverse;
+      justify-content: flex-start;
+    }
+
+    #row-reverse-content1 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row-reverse;
+      -webkit-flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+
+    #row-reverse-content2 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row-reverse;
+      -webkit-flex-direction: row-reverse;
+      justify-content: center;
+    }
+
+    #row-reverse-content3 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row-reverse;
+      -webkit-flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+
+    #row-reverse-content4 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row-reverse;
+      -webkit-flex-direction: row-reverse;
+      justify-content: space-around;
+    }
+
+    /* column */
+
+    #column-content {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    #column-content1 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    #column-content2 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      justify-content: center;
+    }
+
+    #column-content3 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #column-content4 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      justify-content: space-around;
+    }
+
+    /* column-reverse */
+
+    #column-reverse-content {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column-reverse;
+      -webkit-flex-direction: column-reverse;
+      justify-content: flex-start;
+    }
+
+    #column-reverse-content1 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column-reverse;
+      -webkit-flex-direction: column-reverse;
+      justify-content: flex-end;
+    }
+
+    #column-reverse-content2 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column-reverse;
+      -webkit-flex-direction: column-reverse;
+      justify-content: center;
+    }
+
+    #column-reverse-content3 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column-reverse;
+      -webkit-flex-direction: column-reverse;
+      justify-content: space-between;
+    }
+
+    #column-reverse-content4 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column-reverse;
+      -webkit-flex-direction: column-reverse;
+      justify-content: space-around;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="clear">
+    <h3>flex-direction is row</h3>
+    <div class="fix-height">
+      <div class="float-left">
+        <h4>This is a flex-start</h4>
+        <div id="row-content">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a flex-end</h4>
+        <div id="row-content1">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a center</h4>
+        <div id="row-content2">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a space-between</h4>
+        <div id="row-content3">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a space-around</h4>
+        <div id="row-content4">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!--                      -->
+
+  <div class="clear">
+    <h3>flex-direction is row-reverse</h3>
+    <div class="fix-height">
+      <div class="float-left">
+        <h4>This is a flex-start</h4>
+        <div id="row-reverse-content">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a flex-end</h4>
+        <div id="row-reverse-content1">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a center</h4>
+        <div id="row-reverse-content2">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a space-between</h4>
+        <div id="row-reverse-content3">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a space-around</h4>
+        <div id="row-reverse-content4">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!--            -->
+
+  <div class="clear">
+    <h3>flex-direction is column</h3>
+    <div class="fix-height">
+      <div class="float-left">
+        <h4>This is a flex-start</h4>
+        <div id="column-content">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a flex-end</h4>
+        <div id="column-content1">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a center</h4>
+        <div id="column-content2">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a space-between</h4>
+        <div id="column-content3">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a space-around</h4>
+        <div id="column-content4">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!--             -->
+
+  <div class="clear">
+    <h3>flex-direction is row-reverse</h3>
+    <div class="fix-height">
+      <div class="float-left">
+        <h4>This is a flex-start</h4>
+        <div id="column-reverse-content">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a flex-end</h4>
+        <div id="column-reverse-content1">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a center</h4>
+        <div id="column-reverse-content2">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a space-between</h4>
+        <div id="column-reverse-content3">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+      <div class="float-left">
+        <h4>This is a space-around</h4>
+        <div id="column-reverse-content4">
+          <div class="box red">A</div>
+          <div class="box green">B</div>
+          <div class="box pink">C</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

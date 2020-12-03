@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 50px;
+      background: orange;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      line-height: 50px;
+      text-align: center;
+    }
+
+    #content {
+      border: 1px solid #c3c3c3;
+      width: 600px;
+      height: 50px;
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    #content1 {
+      border: 1px solid #c3c3c3;
+      width: 120px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+
+    #order-1{
+      order: -1;
+    }
+
+    #order1 {
+      order: 1;
+    }
+
+    #order2 {
+      order: 2;
+    }
+
+    #order3 {
+      order: 3;
+    }
+
+    #order5 {
+      order: 5;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="box" id="order1">1</div>
+    <div class="box" id="order1">1</div>
+    <div class="box" id="order1">1</div>
+    <div class="box" id="order3">3</div>
+    <div class="box" id="order2">2</div>
+  </div>
+
+  <div id="content">
+    <div class="box" id="order1">1</div>
+    <div class="box" id="order1">1</div>
+    <div class="box" id="order2">2</div>
+    <div class="box" id="order5">5</div>
+    <div class="box" id="order-1">-1</div>
+  </div>
+
+  <div id="content1">
+    <div class="box" id="order1">1</div>
+    <div class="box" id="order1">1</div>
+    <div class="box" id="order2">2</div>
+    <div class="box" id="order5">5</div>
+    <div class="box" id="order-1">-1</div>
+  </div>
+
+
+</body>
+</html>

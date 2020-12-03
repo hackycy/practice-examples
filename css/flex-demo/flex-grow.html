@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 40px;
+      height: 30px;
+      background: yellow;
+      margin: 10px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    #grow1 {
+      flex-grow: 1;
+    }
+
+    #grow2 {
+      flex-grow: 2;
+    }
+
+    #content {
+      width: 300px;
+      height: 50px;
+      display: flex;
+      border: 1px solid black;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="box" id="grow1">1</div>
+    <div class="box" id="grow1">1</div>
+    <div class="box" id="grow1">1</div>
+  </div>
+
+  <div id="content">
+    <div class="box" id="grow1">1</div>
+    <div class="box" id="grow2">2</div>
+    <div class="box" id="grow1">1</div>
+  </div>
+</body>
+</html>

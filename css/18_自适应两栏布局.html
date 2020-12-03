@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #content .left {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+        }
+
+        #content .middle {
+            height: 200px;
+            background-color: green;
+            overflow: hidden;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content" class="clearfix">
+        <div class="left"></div>
+        <div class="middle"></div>
+    </div>
+</body>
+
+</html>

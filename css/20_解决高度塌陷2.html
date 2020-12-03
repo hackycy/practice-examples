@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #content {
+            border: 1px black solid;
+            /* 利用BFC布局原则，BFC块高度，浮动元素也会参与高度计算，只要满足开启BFC的条件即可 */
+            overflow: hidden;
+        }
+
+        #content .box {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>
