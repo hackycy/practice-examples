@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用Canvas进行压缩</title>
+</head>
+<body>
+  <input id="upload" type="file" />
+  <script>
+
+    // 支持的类型
+    const ACCEPT_TYPE = [ 'image/jpeg', 'image/png', 'image/jpg' ];
+    const MAX_HEIGHT = 400;
+    const MAX_WIDTH = 800;
+
+    // 压缩
+    function compress(file, callback) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function(e) {
+        var base64Image = e.target.result;
+        var image = new Image();
+        image.src = base64Image;
+
+        image.addEventListener('load', function(e) {
+          var imageH = image.naturalHeight;
+          var imageW = image.naturalWidth;
+          console.log(imageH, imageW);
+        });
+      }
+    }
+
+    const upload = document.getElementById('upload');
+    upload.addEventListener('change', function(e) {
+      const [ file ] = e.target.files;
+      if (!file) {
+        return;
+      }
+      const { type: fileType, size: fileSize } = file;
+      if (ACCEPT_TYPE.indexOf(fileType) < 0) {
+        upload.value = null;
+        alert('不支持的文件类型' + fileType);
+        return;
+      }
+
+      compress(file);
+    });
+  </script>
+</body>
+</html>
