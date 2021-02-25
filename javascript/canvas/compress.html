@@ -10,10 +10,7 @@
   <input id="upload" type="file" />
   <script>
 
-    // 支持的类型
-    var ACCEPT_TYPE = [ 'image/jpeg', 'image/png', 'image/jpg' ];
-
-    // 压缩
+    // 压缩方法
     function compress(file, callback) {
       var reader = new FileReader();
       reader.readAsDataURL(file);
@@ -68,7 +65,8 @@
         });
       }
     }
-
+    // 支持的类型
+    var ACCEPT_TYPE = [ 'image/jpeg', 'image/png', 'image/jpg' ];
     const upload = document.getElementById('upload');
     upload.addEventListener('change', function(e) {
       const [ file ] = e.target.files;
@@ -82,7 +80,7 @@
         return;
       }
 
-      compress(file);
+      compress(file, (compressImage) => console.log(compressImage));
     });
   </script>
 </body>
