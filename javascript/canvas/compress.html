@@ -11,9 +11,7 @@
   <script>
 
     // 支持的类型
-    const ACCEPT_TYPE = [ 'image/jpeg', 'image/png', 'image/jpg' ];
-    const MAX_HEIGHT = 400;
-    const MAX_WIDTH = 800;
+    var ACCEPT_TYPE = [ 'image/jpeg', 'image/png', 'image/jpg' ];
 
     // 压缩
     function compress(file, callback) {
@@ -25,9 +23,48 @@
         image.src = base64Image;
 
         image.addEventListener('load', function(e) {
+          var needCompress = false; // 是否需要压缩
+          var ratio;
+
+          var maxH = 400;
+          var maxW = 800;
+
           var imageH = image.naturalHeight;
           var imageW = image.naturalWidth;
-          console.log(imageH, imageW);
+          
+          if (maxH < imageH) {
+            needCompress = true;
+            ratio = imageH / maxH;
+            maxW = imageW / ratio;
+          }
+
+          if (maxW < imageW) {
+            needCompress = true;
+            ratio = imageW / maxW;
+            maxH = imageH / ratio;
+          }
+
+          if (!needCompress) {
+            maxW = imageW;
+            maxH = imageH;
+          }
+
+          var canvas = document.createElement('canvas');
+          canvas.setAttribute('id', '__compress__');
+          canvas.width = maxW;
+          canvas.height = maxH;
+          canvas.style.visibility = 'hidden';
+          document.body.appendChild(canvas);
+
+          var ctx = canvas.getContext('2d');
+          ctx.clearRect(0, 0, maxW, maxH);
+          ctx.drawImage(image, 0, 0, maxW, maxH);
+
+          const compressImage = canvas.toDataURL(file.type, 0.9);
+          console.log('原来大小：' + base64Image.length);
+          console.log('压缩后大小：' + compressImage.length)
+          console.log('压缩比：' + base64Image.length / compressImage.length);
+          callback(compressImage);
         });
       }
     }
