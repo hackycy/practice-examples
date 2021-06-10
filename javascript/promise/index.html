@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,28 +8,20 @@
   <script src="./promise.js"></script>
   <script>
 
-    var p = new Promise(function (resolve, reject) {
-      setTimeout(function() {
-          resolve(1)
-      })
-    })
-
-    p.then(function(v) {
-      console.log(v)
-    }, function(e) {
-      console.log(e)
-    })
-
-    p.then(function(v) {
-      console.log(v)
-    }, function(e) {
-      console.log(e)
+    const promise = new window.Promise((resolve, reject) => {
+      reject('失败');
+    }).then().then().then(data => {
+      console.log(data);
+    }, err => {
+      console.log('err', err);
     })
 
 
   </script>
 </head>
+
 <body>
-  
+
 </body>
+
 </html>
