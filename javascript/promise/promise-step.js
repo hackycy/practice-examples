@@ -40,7 +40,7 @@ function fulfill(value) {
     changeState.call(this, State.FULFILLED)
     this.value = value
     // 当状态改变时，需要遍历执行队列中的任务
-    this.queue.forEach(function (queueItem) { queueItem.fulfill() })
+    this.fulfillQueue.forEach(function (fn) { fn() })
   } catch (e) { }
 }
 
@@ -49,7 +49,7 @@ function reject(reason) {
     changeState.call(this, State.REJECTED)
     this.reason = reason
     // 当状态改变时，需要遍历执行队列中的任务
-    this.queue.forEach(function (queueItem) { queueItem.reject() })
+    this.rejectQueue.forEach(function (fn) { fn() })
   } catch (e) { }
 }
 
@@ -128,7 +128,8 @@ function Promise(executor) {
   this.reason = undefined
 
   // 保存异步执行的队列 { fulfill, reject }
-  this.queue = []
+  this.fulfillQueue = []
+  this.rejectQueue = []
 
   if (isFunction(executor)) {
     try {
@@ -171,31 +172,30 @@ Promise.prototype.then = function (onFulfilled, onRejected) {
       }, 0)
     } else {
       // 当还没执行时不可以被调用，那么需要将此保存起来，在后续状态改变后调用
-      _self.queue.push({
-        fulfill: function () {
-          setTimeout(function () {
-            try {
-              // 如果 onFulfilled 或者 onRejected 返回一个值 x ，则运行下面的 Promise 解决过程
-              const x = onFulfilled(_self.value)
-              resolve(promise2, x)
-            } catch (e) {
-              // 如果 onFulfilled 或者 onRejected 抛出一个异常 e ，则 promise2 必须拒绝执行，并返回拒因 e
-              reject.call(promise2, e)
-            }
-          }, 0)
-        },
-        reject: function () {
-          setTimeout(function () {
-            try {
-              // 如果 onFulfilled 或者 onRejected 返回一个值 x ，则运行下面的 Promise 解决过程
-              const x = onRejected(_self.reason)
-              resolve(promise2, x)
-            } catch (e) {
-              // 如果 onFulfilled 或者 onRejected 抛出一个异常 e ，则 promise2 必须拒绝执行，并返回拒因 e
-              reject.call(promise2, e)
-            }
-          }, 0)
-        }
+      _self.fulfillQueue.push(function () {
+        setTimeout(function () {
+          try {
+            // 如果 onFulfilled 或者 onRejected 返回一个值 x ，则运行下面的 Promise 解决过程
+            const x = onFulfilled(_self.value)
+            resolve(promise2, x)
+          } catch (e) {
+            // 如果 onFulfilled 或者 onRejected 抛出一个异常 e ，则 promise2 必须拒绝执行，并返回拒因 e
+            reject.call(promise2, e)
+          }
+        }, 0)
+      })
+
+      _self.rejectQueue.push(function () {
+        setTimeout(function () {
+          try {
+            // 如果 onFulfilled 或者 onRejected 返回一个值 x ，则运行下面的 Promise 解决过程
+            const x = onRejected(_self.reason)
+            resolve(promise2, x)
+          } catch (e) {
+            // 如果 onFulfilled 或者 onRejected 抛出一个异常 e ，则 promise2 必须拒绝执行，并返回拒因 e
+            reject.call(promise2, e)
+          }
+        }, 0)
       })
     }
   })
