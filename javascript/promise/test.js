@@ -1,4 +1,4 @@
-var Promise = require('./promise-step');
+var Promise = require('./promise-step-es6');
 
 var adapter = (function() {
     var res, rej;
