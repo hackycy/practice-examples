@@ -6,37 +6,54 @@
     <title>Promise Test</title>
     <script src="./promise-step2.js"></script>
     <script>
-      const promise = new window.Promise((resolve, reject) => {
-        reject("失败");
+      // const promise = new window.Promise((resolve, reject) => {
+      //   reject("失败");
+      // })
+      //   .then()
+      //   .then()
+      //   .then(
+      //     (data) => {
+      //       console.log(data);
+      //     },
+      //     (err) => {
+      //       console.log("err", err);
+      //     }
+      //   );
+
+      // // resolve test
+      // window.Promise.resolve(
+      //   new Promise((resolve, reject) => {
+      //     setTimeout(() => {
+      //       resolve("ok");
+      //     }, 3000);
+      //   })
+      // )
+      //   .then((data) => {
+      //     console.log(data, "success");
+      //   })
+      //   .catch((err) => {
+      //     console.log(err, "error");
+      //   });
+
+      var p1 = new window.Promise(function (resolve, reject) {
+        resolve("Success");
+      });
+
+      p1.then(function (value) {
+        console.log(value); // "Success!"
+        throw "oh, no!";
       })
-        .then()
-        .then()
+        .catch(function (e) {
+          console.log(e); // "oh, no!"
+        })
         .then(
-          (data) => {
-            console.log(data);
+          function () {
+            console.log("after a catch the chain is restored");
           },
-          (err) => {
-            console.log("err", err);
+          function () {
+            console.log("Not fired due to the catch");
           }
         );
-      
-
-      // resolve test
-      Promise.resolve(
-        new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve("ok");
-          }, 3000);
-        })
-      )
-        .then((data) => {
-          console.log(data, "success");
-        })
-        .catch((err) => {
-          console.log(err, "error");
-        });
-
-
     </script>
   </head>
 
