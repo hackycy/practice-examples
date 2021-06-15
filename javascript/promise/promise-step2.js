@@ -232,6 +232,14 @@ Promise.prototype.catch = function (callback) {
   return this.then(null, callback)
 }
 
+Promise.prototype.finally = function (callback) {
+  return this.then(function(value) {
+      callback(value)
+  }, function (err) {
+    callback(err)
+  })
+}
+
 window.Promise = Promise
 
 // module.exports = Promise
