@@ -234,9 +234,9 @@ Promise.prototype.catch = function (callback) {
 
 Promise.prototype.finally = function (callback) {
   return this.then(function(value) {
-      callback(value)
+      return Promise.resolve(callback()).then(function() { return value })
   }, function (err) {
-    callback(err)
+      return Promise.resolve(callback()).then(function() { throw err })
   })
 }
 
