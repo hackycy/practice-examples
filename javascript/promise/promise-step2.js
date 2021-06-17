@@ -240,6 +240,16 @@ Promise.prototype.finally = function (callback) {
   })
 }
 
+Promise.all = function(arr) {
+  if (!Array.isArray(arr)) {
+    throw new TypeError('param is not iterable')
+  }
+  return new Promise(function(resolve, reject) {
+    const resultArr = []
+    
+  })
+}
+
 window.Promise = Promise
 
 // module.exports = Promise
