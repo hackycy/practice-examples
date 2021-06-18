@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Promise Test</title>
-    <script src="./promise-step2.js"></script>
-    <script>
-      // const promise = new window.Promise((resolve, reject) => {
-      //   reject("失败");
-      // })
-      //   .then()
-      //   .then()
-      //   .then(
-      //     (data) => {
-      //       console.log(data);
-      //     },
-      //     (err) => {
-      //       console.log("err", err);
-      //     }
-      //   );
 
-      // // resolve test
-      // window.Promise.resolve(
-      //   new Promise((resolve, reject) => {
-      //     setTimeout(() => {
-      //       resolve("ok");
-      //     }, 3000);
-      //   })
-      // )
-      //   .then((data) => {
-      //     console.log(data, "success");
-      //   })
-      //   .catch((err) => {
-      //     console.log(err, "error");
-      //   });
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promise Test</title>
+  <script src="./promise-step2.js"></script>
+  <script>
+    // const promise = new window.Promise((resolve, reject) => {
+    //   reject("失败");
+    // })
+    //   .then()
+    //   .then()
+    //   .then(
+    //     (data) => {
+    //       console.log(data);
+    //     },
+    //     (err) => {
+    //       console.log("err", err);
+    //     }
+    //   );
 
-      var p1 = new window.Promise(function (resolve, reject) {
-        resolve("Success");
-      });
+    // // resolve test
+    // window.Promise.resolve(
+    //   new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       resolve("ok");
+    //     }, 3000);
+    //   })
+    // )
+    //   .then((data) => {
+    //     console.log(data, "success");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err, "error");
+    //   });
 
-      p1.then(function (value) {
-        console.log(value); // "Success!"
-        throw "oh, no!";
-      })
-        .catch(function (e) {
-          console.log(e); // "oh, no!"
-        })
-        .then(
-          function () {
-            console.log("after a catch the chain is restored");
-          },
-          function () {
-            console.log("Not fired due to the catch");
-          }
-        );
-    </script>
-  </head>
+    // var p1 = new window.Promise(function (resolve, reject) {
+    //   resolve("Success");
+    // });
 
-  <body></body>
+    // p1.then(function (value) {
+    //   console.log(value); // "Success!"
+    //   throw "oh, no!";
+    // })
+    //   .catch(function (e) {
+    //     console.log(e); // "oh, no!"
+    //   })
+    //   .then(
+    //     function () {
+    //       console.log("after a catch the chain is restored");
+    //     },
+    //     function () {
+    //       console.log("Not fired due to the catch");
+    //     }
+    //   );
+
+    const promise1 = Promise.resolve(3);
+    const promise2 = 42;
+    const promise3 = new Promise((resolve, reject) => {
+      setTimeout(resolve, 100, 'foo');
+    });
+
+    Promise.all([promise1, promise2, promise3]).then((values) => {
+      console.log(values);
+    });
+// expected output: Array [3, 42, "foo"]
+  </script>
+</head>
+
+<body></body>
+
 </html>

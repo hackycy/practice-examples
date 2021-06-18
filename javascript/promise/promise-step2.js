@@ -246,7 +246,31 @@ Promise.all = function(arr) {
   }
   return new Promise(function(resolve, reject) {
     const resultArr = []
-    
+    // 已处理计数
+    let processCount = 0
+    const processResultByIndex = function(result, i) {
+      resultArr[i] = result
+      // 已处理计数 + 1
+      processCount += 1
+
+      // 如果计数等于arr长度则代表已处理完毕，则执行resolve
+      if (processCount === arr.length) {
+        resolve(resultArr)
+      }
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      const item = arr[i]
+      if (item && typeof item.then === 'function') {
+        // is a promise or thenable
+        item.then(function (value) {
+          processResultByIndex(value, i)
+        }, reject)
+      } else {
+        // normal value
+        processResultByIndex(item, i)
+      }
+    }
   })
 }
 
