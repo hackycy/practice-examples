@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "sourceMap": true,
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ]
     }
   },
