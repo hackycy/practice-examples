@@ -6,6 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const ENV = process.env.NODE_ENV ?? 'development'
 
+const port = parseInt(process.env.PORT ?? 8000)
+
 function resolve(dir) {
   return path.resolve(__dirname, dir)
 }
@@ -17,7 +19,11 @@ module.exports = {
   },
   output: {
     path: resolve('dist'),
-    filename: '[name]_[hash:8].js'
+    filename: '[name]_[contenthash:8].js'
+  },
+  devServer: {
+    contentBase: resolve('public'),
+    port,
   },
   resolve: {
     alias: {
