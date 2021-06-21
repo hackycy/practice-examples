@@ -18,6 +18,9 @@ module.exports = {
     app: resolve('./src/app.ts')
   },
   output: {
+    // 发布到线上的所有资源的 URL 前缀，string 类型
+    publicPath: '/',
+    // 输出文件存放的目录，必须是 string 类型的绝对路径。
     path: resolve('dist'),
     filename: '[name]_[contenthash:8].js'
   },
