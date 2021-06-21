@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const ENV = process.env.NODE_ENV ?? 'development'
@@ -38,6 +39,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new ESLintPlugin({
+      extensions: ['ts', 'js']
+    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       chunks: ['app'],
