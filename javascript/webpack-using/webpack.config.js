@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const ENV = process.env.NODE_ENV ?? 'development'
 
@@ -29,7 +30,7 @@ module.exports = {
     // 配置loader
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.(ts|js)$/,
         use: ['babel-loader?cacheDirectory'],
         // 只命中src目录里的ts文件
         include: resolve('src')
@@ -37,6 +38,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       chunks: ['app'],
       filename: (entry) => {
