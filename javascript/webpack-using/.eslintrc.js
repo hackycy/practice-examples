@@ -4,9 +4,14 @@ module.exports = {
     node: true,
     es6: true,
   },
-  extends: ['plugin:vue/recommended', 'eslint:recommended'],
+  parser: '@typescript-eslint/parser',
+  plugins: [
+    '@typescript-eslint',
+  ],
+  extends: ['plugin:vue/recommended', 'plugin:@typescript-eslint/recommended', 'eslint:recommended'],
   rules: {
-    'no-unused-vars': [2, { 'vars': 'all', 'args': 'none' }],
     'semi': [2, 'never'],
-  }
+    'quotes': ['error', 'single'],
+    'no-unused-vars': [2, { vars: 'all', args: 'none' }],
+  },
 }
