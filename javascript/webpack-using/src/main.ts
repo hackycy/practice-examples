@@ -1,4 +1,12 @@
+// css
 import './styles/global.scss'
 
-const appElement = document.querySelector('#app')
-console.log(appElement)
+import { defineReactive } from '@/vue/observer'
+
+const obj = { a: 1 }
+
+defineReactive(obj, 'a', obj.a)
+
+obj.a = 2
+
+console.log(obj.a)

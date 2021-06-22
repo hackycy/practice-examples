@@ -1,4 +1,4 @@
-import { Dep } from './dep'
+// import { Dep } from './dep'
 
 /**
  * Define a reactive property on an Object.
@@ -6,16 +6,21 @@ import { Dep } from './dep'
 export function defineReactive(
   target: any,
   key: string,
-  val: any
+  val: any // 是一个引用
 ): void {
-  const dep = new Dep()
   // define
   Object.defineProperty(target, key, {
     enumerable: true,
     configurable: true,
     get: function reactiveGetter(): any {
-      dep.depend()
-      return 1
+      console.log(val)
+      return val
     },
+    set: function reactiveSetter(newVal) {
+      if (val === newVal) {
+        return
+      }
+      val = newVal
+    }
   })
 }
