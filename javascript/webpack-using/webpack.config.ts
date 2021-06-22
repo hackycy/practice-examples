@@ -23,7 +23,7 @@ function resolve(dir: string): string {
 const config: webpack.Configuration = {
   mode: ENV,
   entry: {
-    index: resolve('./src/main.ts'),
+    index: resolve('./src/main'),
   },
   output: {
     // 发布到线上的所有资源的 URL 前缀，string 类型
